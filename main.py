@@ -22,7 +22,6 @@ async def yatc(urls: list[str], userAgent: str = "*"):
         if len(scraped) > 0:
             preprocessed_array = await pre_processing(scraped)
             arr = await feature_extractor(preprocessed_array)
-            print(arr)
             return arr
 
 
