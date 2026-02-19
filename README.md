@@ -12,10 +12,3 @@ Get [uv](https://docs.astral.sh/uv/#installation)
 uv sync
 uv run main.py
 ```
-
-
-``` python
-import nltk
-nltk.download('wordnet')
-nltk.download('punkt_tab')
-```

@@ -2,7 +2,7 @@ import asyncio
 
 import aiohttp
 
-from src.services.classifier import feature_extractor, pre_processing
+from src.services.classifier import pre_processing
 from src.services.scraper import Scraping
 from src.services.validator import validate
 
@@ -21,8 +21,6 @@ async def yatc(urls: list[str], userAgent: str = "*"):
         )
         if len(scraped) > 0:
             preprocessed_array = await pre_processing(scraped)
-            arr = await feature_extractor(preprocessed_array)
-            return arr
 
 
 asyncio.run(yatc(urls))
