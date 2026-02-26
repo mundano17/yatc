@@ -2,7 +2,7 @@ import asyncio
 
 import aiohttp
 
-from src.services.classifier import pre_processing
+from src.services.classifier import Classifier
 from src.services.scraper import Scraping
 from src.services.validator import validate
 
@@ -19,8 +19,11 @@ async def yatc(urls: list[str], userAgent: str = "*"):
         scraped = await asyncio.gather(
             *[(Scraping(session, link, userAgent)) for link in allowed_links]
         )
-        if len(scraped) > 0:
-            preprocessed_array = await pre_processing(scraped)
+        classifier_init = Classifier(
+            scraped,
+            ["economics", "sports", "finance", "politics", "deals", "gaming", "AI"],
+        )
+        print(classifier_init())
 
 
 asyncio.run(yatc(urls))
